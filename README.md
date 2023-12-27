@@ -2,7 +2,7 @@
 
 ✅ Introduction
 
-We want to understand the factors affecting the pricing of cars in the American market, since those may be very different from other markets. 
+We want to understand the factors affecting the pricing of cars in the American market, since those may be very different from other markets. Check the `Multiple-linear-regression.md` file!
 
 📊 Aim
 
