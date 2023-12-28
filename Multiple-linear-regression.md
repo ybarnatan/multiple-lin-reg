@@ -6,7 +6,12 @@ Multiple Linear Regression
 We want to understand the factors affecting the pricing of cars in the
 American market, since those may be very different from other markets.
 The dataset has several variables, but the company wants to know how
-well specific variables describe the price of a car.
+well specific variables describe the price of a car. These are:
+
+- Fuel type the engine uses
+- Power of the engine
+- Consumption in city roads and highways
+- Maximum frequency at which the engine operates
 
 # Exploratory analysis
 
@@ -16,8 +21,7 @@ categorical variable fuel type, that will be included later on).
 <img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 With this type of plot we can see which variables are highly correlated
-with the price of the car. Also we can spot if a linear relationship is
-even plausible.
+with the price of the car.
 
 Therefore, we’ll have in mind the power of the engine (horsepower,
 \[HP\]), the miles per gallon reached in city roads (citympg,
