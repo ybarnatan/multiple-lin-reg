@@ -68,26 +68,17 @@ To get a quick intuition of which model performed best, we’ll rank them
 by AIC, since they’re nested models.
 
 ``` r
-ranking = stats::AIC(modelo1, modelo2, modelo3, modelo4, modelo5, modelo6)
-pander::pandoc.table(ranking)
+knitr::kable(ranking)
 ```
 
-    ## 
-    ## -------------------------
-    ##    &nbsp;      df   AIC  
-    ## ------------- ---- ------
-    ##  **modelo1**   2    4269 
-    ## 
-    ##  **modelo2**   3    4269 
-    ## 
-    ##  **modelo3**   3    4054 
-    ## 
-    ##  **modelo4**   3    4141 
-    ## 
-    ##  **modelo5**   3    4134 
-    ## 
-    ##  **modelo6**   6    4006 
-    ## -------------------------
+|         |  df |      AIC |
+|:--------|----:|---------:|
+| modelo1 |   2 | 4268.941 |
+| modelo2 |   3 | 4268.639 |
+| modelo3 |   3 | 4053.911 |
+| modelo4 |   3 | 4140.693 |
+| modelo5 |   3 | 4134.250 |
+| modelo6 |   6 | 4005.536 |
 
 The lower the AIC, the better the model’s performance. In our analysis
 we can see that the lowest AIC is for the 6th model. Such model
@@ -112,18 +103,18 @@ might_be_outliers = res %>% filter(abs(std_resid)>2)
 We expect all values of standardized residuals to be in range $\pm$ 2.
 As we can see, there is no major deviations from this assumption.
 
-<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 Some values seems to be off, but they represent 4%, so it’s OK to
 continue with the analysis, keeping all data, and not diving much into
 these.
 
-\###Leveraging points
+### Leveraging points
 
 We can study the global effect of one observation on the model’s
 estimates by using the Cook’s distance.
 
-<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 Values with D \> 1 are considered high leveraging. Since we’re not
 having any, there are no such datapoints.
@@ -133,7 +124,7 @@ having any, there are no such datapoints.
 If the data follows a normal distribution, the quantile-quantile plot
 should show the dots aligned with an exact diagonal line.
 
-<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 In spite of showing high skewness at low and high values, in general,
 linear models are moderatedly strict about the normality assumption
@@ -155,46 +146,7 @@ the sum. In spite of this we can perform an overall analysis:
   example, for city mpg, the distribution of diesel data seems to be
   shifted towards higher values than gas’ ones.
 
-``` r
-CITY.PLOT = ggplot(data=cars,aes(x = citympg, y=price, color=fueltype)) +
-    geom_point(size=1.5,alpha=0.8) +
-    scale_color_manual(values = color_fueltype,
-                       labels=etiq_fuels) +
-    fuentes_customizadas + 
-    ylab("Price (USD)")  +
-    xlab("City mpg (miles/gallon)") + 
-    ggtitle("Price vs. City mpg") +
-    labs(color = "Fuel type") 
-    
-
-HIGHWAY.PLOT = ggplot(data=cars,aes(x = highwaympg, y=price, color=fueltype)) +
-    geom_point(size=1.5,alpha=0.8) +
-     scale_color_manual(values = color_fueltype,
-                       labels=etiq_fuels) +
-    fuentes_customizadas + 
-    ylab("Price (USD)")  +
-    xlab("Highway mpg (miles/gallon)") + 
-    ggtitle("Price vs. Highway mpg")+
-    labs(color = "Fuel type" )
-
-
-HORSE.PLOT = ggplot(data=cars,aes(x = horsepower, y=price, color=fueltype)) +
-    geom_point(size=1.5,alpha=0.8) +
- scale_color_manual(values = color_fueltype,
-                       labels=etiq_fuels) +    fuentes_customizadas + 
-    ylab("Price (USD)")  +
-    xlab("Horsepower (HP)") + 
-    ggtitle("Price vs. Horsepower") +
-    labs(color = "Fuel type")
-    
-
-FINAL.PLOT = ggpubr::ggarrange(CITY.PLOT, HIGHWAY.PLOT, HORSE.PLOT,
-                              ncol=3, nrow=1, 
-                              common.legend = TRUE,
-                              legend= 'bottom') 
-```
-
-<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="Multiple-linear-regression_files/figure-gfm/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 |                 | Estimate | Std. Error | t value | Pr(\>\|t\|) |
 |:---------------:|:--------:|:----------:|:-------:|:-----------:|
@@ -209,7 +161,9 @@ FINAL.PLOT = ggpubr::ggarrange(CITY.PLOT, HIGHWAY.PLOT, HORSE.PLOT,
 |     205      |        4162         | 0.7339 |     0.7286     |
 
 Fitting linear model: price \~ fueltype + horsepower + citympg +
-highwaympg Let´s see what the results of the models are:
+highwaympg
+
+Let´s see what the results of the models are:
 
 - We can get the **estimated coefficients** for each variable, being
   citympg the only one non significant. Albeit that, we’ll keep it in
@@ -221,12 +175,12 @@ highwaympg Let´s see what the results of the models are:
   others to establish the price of cars. With no doubt, the type of fuel
   and the horsepower dominate the value of the car.
 - **R2 adj.** measures the goodness of fit penalized by variable number
-  (i.e controlling overfitting), we have got very good fit, since \$ R^2
-  = 0.73 \$.
+  (i.e controlling overfitting), we have got very good fit, since
+  $R^2 = 0.73$.
 - Finally, we’ve got a measurement of the **residual standard error
   (RSE)** (how well/bad our regression model predicts values). In this
-  case, \$ RSE = 4162 \$, which means that the model predicts the value
-  of the car with an error of $\pm\hspace{0.3em}4162\hspace{0.3em}USD$.
+  case, $RSE = 4162$, which means that the model predicts the value of
+  the car with an error of $\pm\hspace{0.3em}4162\hspace{0.3em}USD$.
 
 # Conclusion and predictions
 
@@ -246,7 +200,7 @@ for it. Suppose we have a deal for a car that shows the following data:
 
 We can then use our model in order to estimate the value.
 
-\$Carprice = 12443 + 142 \* 150 + 259*20 -473*25 -6577 \* 1 \$
+$Car\hspace{0.3em}price = 12443 + 142 * 150 + 259*20 -473*25 -6577 * 1$
 
 $Car\hspace{0.3em}price = 20521\hspace{0.3em}USD$
 
