@@ -204,10 +204,10 @@ for it. Suppose we have a deal for a car that shows the following data:
 
 We can then use our model in order to estimate the value.
 
-$Car\hspace{0.3em}price = 12443 + 142 * 150 + 259*20 -473*25 -6577 * 1$
+$Car\hspace{0.3em}price = 12443 + 142 * 150 + 259 * 20 -473 * 25 - 6577 * 1$
 
 $Car\hspace{0.3em}price = 20521\hspace{0.3em}USD$
 
-We’d expect to place an offer for about 20,000 USD (considering the RSE
-of the model and how much we wish to negotiate starting from that
-price).
+We’d expect to place an offer for about 20,000 USD. Next we should
+consider the RSE of the model and how much we wish to negotiate starting
+from that price.
