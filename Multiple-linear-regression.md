@@ -31,7 +31,7 @@ Based on the graph, we could reasonably assume there is a linear
 relationship between these variables. The maximal model we aspire to fit
 is as follows:
 
-$E[Car\hspace{0.3em}Price_i] = \beta_0i + \beta_1 * horsepower_i + \beta_2 * citympg_i + + \beta_3 * highwaympg_i + + \beta_4 * fueltype_i$
+$E[Car\hspace{0.3em}Price_i | horsepower_i, citympg_i, highwaympg_i, fueltype_i] = \beta_0 + \beta_1 * horsepower_i + \beta_2 * citympg_i + + \beta_3 * highwaympg_i + + \beta_4 * fueltype_i$
 
 We will discard any interaction between variables not only for
 simplicity but also for a logical reason: we do not expect these
