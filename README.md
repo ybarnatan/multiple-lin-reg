@@ -1,17 +1,52 @@
-# Multiple linear regression analysis
+#🚗 Car Price Analysis – U.S. Market (Multiple Linear Regression)
 
-✅ Introduction
 
-We want to understand the factors affecting the pricing of cars in the American market, since those may be very different from other markets. Check the `Multiple-linear-regression.md` file!
+📊 Project Aim
 
-📊 Aim
+The purpose of this project is to explore the factors that influence car pricing in the U.S. automotive market, which may differ significantly from other regions.
 
-Build a multiple linear regression model, checking assumptions and analyzing the results in terms of a market question.
+The goal is to:
 
-💻 Stack
++ Perform exploratory data analysis (EDA)
 
-For this project, I used R and R-markdown
++ Build a multiple linear regression model
+
++ Check model assumptions (linearity, normality, multicollinearity, etc.)
+
++ Interpret the results in the context of market-driven pricing behavior
+
+📄 Full analysis available in the following [notebook](https://github.com/ybarnatan/multiple-lin-reg/blob/main/Multiple-linear-regression.md).
+
+---
+
+💻 Tech Stack
+
++ R
+
++ R Markdown
+
+---
+
+🧠 Key Features
+
++ Model fitting with interpretation of coefficients
+
++ Validation of key assumptions (normality, homoscedasticity, multicollinearity)
+
++ Model output interpreted in plain language with business relevance
+
+---
 
 📚 Data Source
 
-[Here](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction)
+Car Price Dataset – [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction)
+
+---
+
+## ✍️ **Author**  
+
+**Yair Barnatan**
+
+[LinkedIn](https://www.linkedin.com/in/yair-barnatan/) | [GitHub](https://github.com/ybarnatan)
+
+📧 Email: ybbarnatan@gmail.com
