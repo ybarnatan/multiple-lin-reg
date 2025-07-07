@@ -1,7 +1,7 @@
 # 🚗 Car Price Analysis – U.S. Market (Multiple Linear Regression)
 
 
-📊 Project Aim
+## 📊 Project Aim
 
 The purpose of this project is to explore the factors that influence car pricing in the U.S. automotive market, which may differ significantly from other regions.
 
@@ -19,7 +19,7 @@ The goal is to:
 
 ---
 
-💻 Tech Stack
+## 💻 Tech Stack
 
 + R
 
@@ -27,7 +27,7 @@ The goal is to:
 
 ---
 
-🧠 Key Features
+## 🧠 Key Features
 
 + Model fitting with interpretation of coefficients
 
@@ -37,7 +37,7 @@ The goal is to:
 
 ---
 
-📚 Data Source
+##  📚 Data Source
 
 Car Price Dataset – [Kaggle](https://www.kaggle.com/datasets/hellbuoy/car-price-prediction)
 
